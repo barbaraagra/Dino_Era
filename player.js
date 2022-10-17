@@ -18,7 +18,8 @@ class Player {
     }
 
 
-    move() {
+    newPos() {
+        this.x += this.speedX;
 
     }
 
