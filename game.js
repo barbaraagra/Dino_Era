@@ -1,71 +1,59 @@
 class Game {
-    constructor(ctx, width, height, player) {
-        this.ctx = ctx;
-        this.width = width;
-        this.height = height;
-        this.player = player;
-        this.intervalId = null;
+    constructor() {
+        this.canvas = document.getElementById('canvas');
+        this.ctx = canvas.getContext('2d');
+        this.dino = null;
         this.obstacles = [];
+        this.intervalId = null;
         this.frames = 0;
+        this.width = 800;
+        this.height = 500;
+        this.background = new Image();
+        this.controls = null;
     }
-
     drawBackground() {
-        this.drawBackground.src = '../assets/images/mainbackground.jpg'
-        this.ctx.drawImage(this.drawBackground, 0, 0, this.width, this.height);
-    }
-
+/*         this.background = document.getElementsByClassName('main-background')
+ *//*         this.ctx.drawImage(this.background, 0, 0, this.width, this.height);
+ */    }
     start() {
-        this.dino = new Player(450, 200, 50, 75, this.ctx);
-        this.controls = new Controls(this.dino);
-        this.controls.keyboardEvents();
+        this.dino = new Player(100, 420, 50, 75, this.ctx);
         this.intervalId = setInterval(this.update, 1000 / 60);
     }
-
     update = () => {
-        this.frames++;
-        this.drawBackground();
-        this.dino.draw();
         this.updateObstacles();
-        //  this.checkGameOver();
-        //  this.score();
+        this.checkGameOver();
+        this.score();
     };
 
-    //PLAYER
+    updateObstacles() {
+        for (let i = 0; i < this.obstacles.length; i++) {
+            this.obstacles[i].y += 1;
+            this.obstacles[i].draw();
+        }
 
-    draw() {
-        this.image.src = '../assets/images/playerone.png'
-        this.ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
-    }
-    left() {
-        return this.x;
-    }
-    right() {
-        return this.x + this.w;
+        if (this.frames % 120 === 0) {
+            this.obstacles.push(new Enemy(this.ctx));
+        }
     }
 
-    //ENEMY
+    checkGameOver() {
+        const crashed = this.obstacles.some((obstacle) => {
+            return this.dino.crashWith(obstacle);
+        });
 
-    class Enemy {
-    constructor(ctx) {
-        this.ctx = ctx;
-        // pedir ajuda nessa parte
-    }
-}
-
-draw(){
-    this.image.src = '../assets/images/meteoro.png'
-    this.ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
-}
-
-
-updateAsteroids() {
-    for (let i = 0; i < this.asteroids.length; i++) {
-        this.asteroids[i].y += 1;
-        this.asteroids[i].draw();
+        if (crashed) {
+            this.stop();
+        }
     }
 
-    if (this.frames % 80 === 0) {
-        this.obstacles.push(new Enemy(this.ctx));
+    stop() {
+        clearInterval(this.intervalId);
+    }
+
+    score() {
+        this.ctx.font = '18px monospace';
+        this.ctx.fillStyle = 'black';
+        const score = Math.floor(this.frames / 5);
+        this.ctx.fillText(`Score: ${score}`, 100, 50);
     }
 }
-

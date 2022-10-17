@@ -6,20 +6,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dino Era</title>
+    <link rel="stylesheet" href="./docs/assets/styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Londrina+Shadow&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <h1>Dino Era Game</h1>
 
-    <button id="start-button">StartGame</button>
+    <div class="game-intro">
 
-    <div id="game-board">
-        <canvas id="canvas" style="border: 5px solid black" width="1000" height="563"></canvas>
+
+        <div class="firstscreen">
+            <h1>Dino Era</h1>
+            <button id="start-button">Start Game</button>
+            <img src="./docs/assets/images/setas.png" alt="setas" class="setas">
+        </div>
+
+        <div game-board>
+            <!-- <img src="./docs/assets/images/game-bg.png" alt="main background" class="main-background"> -->
+            <!--    <img src="./docs/assets/images/playerone.png" alt="apatosaurus" class="apatosaurus"> -->
+            <canvas id="canvas" style="border: 5px solid whitesmoke" width="800" height="550"></canvas>
+
+        </div>
     </div>
-
+    <script type="text/javascript" src="enemy.js"></script>
     <script type="text/javascript" src="components.js"></script>
+    <script type="text/javascript" src="player.js"></script>
     <script type="text/javascript" src="game.js"></script>
     <script type="text/javascript" src="main.js"></script>
+
 </body>
 
 </html>
