@@ -17,14 +17,13 @@ class Player {
         ctx.drawImage(this.img, this.x, this.y, 100, 100);
     }
 
-
     newPos() {
         this.x += this.speedX;
 
     }
 
     top() {
-        return this.y;
+        return (this.y + 18);
     }
     bottom() {
         return this.y + this.h;

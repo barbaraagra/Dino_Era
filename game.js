@@ -10,6 +10,28 @@ class Game {
         this.height = 550;
         this.background = new Image();
         this.controls = null;
+
+        const img1 = new Image();
+        img1.addEventListener("load", () => {
+            this.img1 = img1;
+        });
+        img1.src = "docs/assets/images/heart-full.png";
+
+
+        const img2 = new Image();
+        img2.addEventListener("load", () => {
+            this.img2 = img2;
+        });
+        img2.src = "docs/assets/images/heart-oneemp.png";
+
+
+        const img3 = new Image();
+        img3.addEventListener("load", () => {
+            this.img3 = img3;
+        });
+        img3.src = "docs/assets/images/heart-twoemp.png";
+
+
     }
     drawBackground() {
 /*         this.background = document.getElementsByClassName('main-background')
@@ -27,8 +49,10 @@ class Game {
         this.updateObstacles();
         this.player.draw();
         this.checkGameOver();
+        this.drawHearts1();
         this.score();
     };
+
 
     updateObstacles() {
         for (let i = 0; i < this.obstacles.length; i++) {
@@ -49,6 +73,8 @@ class Game {
         });
 
         if (crashed) {
+            this.drawHearts2();
+            this.drawHearts3();
             this.stop();
         }
     }
@@ -61,6 +87,20 @@ class Game {
         this.ctx.font = '18px monospace';
         this.ctx.fillStyle = 'green';
         const score = Math.floor(this.frames / 5);
-        this.ctx.fillText(`Score: ${score}`, 100, 50);
+        this.ctx.fillText(`Score: ${score}`, 675, 40);
     }
+
+    drawHearts1() {
+        ctx.drawImage(this.img1, 35, 35, 80, 20);
+    }
+
+    drawHearts2() {
+        ctx.drawImage(this.img2, 35, 60, 80, 20);
+    }
+
+    drawHearts3() {
+        ctx.drawImage(this.img3, 35, 80, 80, 20);
+    }
+
+
 }

@@ -4,26 +4,20 @@
 }
 
 body {
-    background-color: #E9D7EB;
+    background-image: url('/docs/assets/images/fundo.png');
     color: black;
     font-size: 10px;
 
 }
 
-h1 {
-    font-family: 'Londrina Shadow', cursive;
-    font-size: 4rem;
-    color: #F4CC67;
-}
 
 #canvas {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('game-bg.png');
+    background-image: url('/docs/assets/images/background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    /* background-size: 800px, 500px; */
 }
 
 .game-intro {
