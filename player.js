@@ -5,17 +5,16 @@ class Player {
         this.w = w;
         this.h = h;
         this.ctx = ctx;
-        const img = new Image();
-        img.addEventListener("load", () => {
-            this.img = img;
-            this.draw();
-        });
-        img.src = "docs/assets/images/playerone.png";
+        this.img = new Image();
+
+
     }
 
     draw() {
+        this.img.src = "docs/assets/images/playerone.png";
         ctx.drawImage(this.img, this.x, this.y, 100, 100);
     }
+
 
     newPos() {
         this.x += this.speedX;
@@ -34,6 +33,7 @@ class Player {
     right() {
         return this.x + this.w;
     }
+
 
     crashWith(obstacle) {
         return !(

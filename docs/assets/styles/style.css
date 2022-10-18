@@ -4,12 +4,13 @@
 }
 
 body {
-    background-image: url('/docs/assets/images/fundo.png');
+    background-image: url('/docs/assets/images/teladefundo.png');
     color: black;
     font-size: 10px;
 
 }
 
+.firstscreen__log {}
 
 #canvas {
     display: flex;
@@ -37,10 +38,17 @@ body {
     padding: 10px 20px;
     margin: 30px;
     border-radius: 10px;
+    cursor: pointer;
+}
+
+#start-button:hover {
+    background-color: #F4CC67;
+    transform: scale(1.1);
+    transition: all 0.5s;
 }
 
 .setas {
-    width: 150px;
+    width: 300px;
 }
 
 .firstscreen {

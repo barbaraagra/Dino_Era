@@ -10,27 +10,18 @@ class Game {
         this.height = 550;
         this.background = new Image();
         this.controls = null;
-
-        const img1 = new Image();
-        img1.addEventListener("load", () => {
-            this.img1 = img1;
-        });
-        img1.src = "docs/assets/images/heart-full.png";
-
-
-        const img2 = new Image();
-        img2.addEventListener("load", () => {
-            this.img2 = img2;
-        });
-        img2.src = "docs/assets/images/heart-oneemp.png";
-
-
-        const img3 = new Image();
-        img3.addEventListener("load", () => {
-            this.img3 = img3;
-        });
-        img3.src = "docs/assets/images/heart-twoemp.png";
-
+        this.life = 30;
+        this.img1 = new Image();
+        this.img1.src = "docs/assets/images/heart-full.png";
+        this.img2 = new Image();
+        this.img2.src = "docs/assets/images/heart-oneemp.png";
+        this.img3 = new Image();
+        this.img3.src = "docs/assets/images/heart-twoemp.png";
+        this.imgGameOver = new Image();
+        this.imgGameOver.src = "docs/assets/images/gameover.png";
+        this.imgWin = new Image();
+        this.imgWin.src = ""
+        this.count
 
     }
     drawBackground() {
@@ -49,8 +40,9 @@ class Game {
         this.updateObstacles();
         this.player.draw();
         this.checkGameOver();
-        this.drawHearts1();
-        this.score();
+        this.timer();
+        //   this.drawHearts1();
+        //  this.score();
     };
 
 
@@ -62,20 +54,29 @@ class Game {
             this.obstacles[i].draw();
         }
 
-        if (this.frames % 80 === 0) {
+        if (this.frames % 110 === 0) {
             this.obstacles.push(new Enemy(this.ctx));
         }
     }
 
     checkGameOver() {
-        const crashed = this.obstacles.some((obstacle) => {
-            return this.player.crashWith(obstacle);
-        });
 
-        if (crashed) {
-            this.drawHearts2();
-            this.drawHearts3();
-            this.stop();
+        for (let i = 0; i < this.obstacles.length; i++) {
+            if (this.player.crashWith(this.obstacles[i])) {
+                this.life -= 10;
+                this.obstacles.splice(i, 1);
+            } else if (this.life === 30) {
+                this.drawHearts1();
+            } else if (this.life === 20) {
+                this.drawHearts2();
+
+            } else if (this.life === 10) {
+                this.drawHearts3();
+
+            } else if (this.life <= 0) {
+                this.ctx.drawImage(this.imgGameOver, 0, 0, this.width, this.height);
+                this.stop();
+            }
         }
     }
 
@@ -83,24 +84,51 @@ class Game {
         clearInterval(this.intervalId);
     }
 
-    score() {
-        this.ctx.font = '18px monospace';
-        this.ctx.fillStyle = 'green';
-        const score = Math.floor(this.frames / 5);
-        this.ctx.fillText(`Score: ${score}`, 675, 40);
-    }
+    timer() {
+        this.ctx.font = "20px monospace";
+        this.ctx.fillStyle = "green";
+        this.count = 60 - (this.frames / 60);
+        this.ctx.fillText(`Timer: ${this.count.toFixed(2)[0]}${this.count.toFixed(2)[1]}:${this.count.toFixed(2)[3]}${this.count.toFixed(2)[4]}`, 630, 50);
+    };
+
+
+    /* score() {
+         this.ctx.font = '18px monospace';
+         this.ctx.fillStyle = 'green';
+         const score = Math.floor(this.frames / 5);
+         this.ctx.fillText(`YEARS: ${score}`, 675, 40);
+     }*/
+
+    //COUNTDOWN
+    /*    const timeH = document.querySelector('#countdown');
+        let timeSecond = 60;
+     
+    display(timeSecond)
+     
+    const countDown = setInterval(() => {
+        timeSecond--;
+        displayTime(timeSecond);
+        if (timeSecond <= 0 || timeSecond < 1) {
+            clearInterval(countDown);
+        }
+    }, 1000)
+     
+    function displayTime(second) {
+        const min = Math.floor(second / 60);
+        const sec = Math.floor(second % 60);
+        timeH.innerHTML = `${min < 10 ? '0' : ''}${min}:${sec < 10 ? '0' : ''}${sec}`
+    } */
 
     drawHearts1() {
         ctx.drawImage(this.img1, 35, 35, 80, 20);
     }
 
     drawHearts2() {
-        ctx.drawImage(this.img2, 35, 60, 80, 20);
+        ctx.drawImage(this.img2, 35, 35, 80, 20);
     }
 
     drawHearts3() {
-        ctx.drawImage(this.img3, 35, 80, 80, 20);
+        ctx.drawImage(this.img3, 35, 35, 80, 20);
     }
-
 
 }

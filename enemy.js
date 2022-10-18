@@ -1,7 +1,7 @@
 class Enemy {
     constructor(ctx) {
         this.ctx = ctx;
-        this.x = Math.floor(Math.random() * 800) + 100;
+        this.x = Math.floor(Math.random() * 800) + 280;
         this.y = 0;
         this.w = 70;
         this.h = 70;
