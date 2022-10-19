@@ -5,12 +5,17 @@
 
 body {
     background-image: url('/docs/assets/images/teladefundo.png');
-    color: black;
+    color: #AF43AB;
     font-size: 10px;
 
 }
 
-.firstscreen__log {}
+.firstscreen h2 {
+    font-family: 'Silkscreen', cursive;
+    width: 300px;
+    font-size: 18px;
+    text-align: center;
+}
 
 #canvas {
     display: flex;
@@ -35,6 +40,7 @@ body {
     align-content: space-between;
     background-repeat: no-repeat;
 }
+
 
 #start-screen__player-one {
     font-family: 'Silkscreen', cursive;

@@ -30,11 +30,11 @@ class Game {
  */    }
     start() {
         if (this.difficulty === 1) {
-            this.player = new Player(100, 420, 50, 75, this.ctx, "docs/assets/images/playerone.png");
+            this.player = new Player(100, 420, 50, 75, this.ctx, "docs/assets/images/playereasy.png");
         } else if (this.difficulty === 2) {
-            this.player = new Player(100, 200, 90, 40, this.ctx, "docs/assets/images/playertwo.png");
+            this.player = new Player(600, 370, 105, 90, this.ctx, "docs/assets/images/playernormal.png");
         } else if (this.difficulty === 3) {
-            this.player = new Player(100, 420, 90, 90, this.ctx, "docs/assets/images/playerthree.png");
+            this.player = new Player(600, 200, 100, 75, this.ctx, "docs/assets/images/playerhard.png");
         }
 
         this.controls = new Controls(this.player);
@@ -115,25 +115,7 @@ class Game {
          this.ctx.fillText(`YEARS: ${score}`, 675, 40);
      }*/
 
-    //COUNTDOWN
-    /*    const timeH = document.querySelector('#countdown');
-        let timeSecond = 60;
-     
-    display(timeSecond)
-     
-    const countDown = setInterval(() => {
-        timeSecond--;
-        displayTime(timeSecond);
-        if (timeSecond <= 0 || timeSecond < 1) {
-            clearInterval(countDown);
-        }
-    }, 1000)
-     
-    function displayTime(second) {
-        const min = Math.floor(second / 60);
-        const sec = Math.floor(second % 60);
-        timeH.innerHTML = `${min < 10 ? '0' : ''}${min}:${sec < 10 ? '0' : ''}${sec}`
-    } */
+
 
     drawHearts1() {
         ctx.drawImage(this.img1, 35, 35, 80, 20);

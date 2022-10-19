@@ -5,7 +5,6 @@ class Enemy {
         this.y = 0;
         this.w = 70;
         this.h = 70;
-        this.color = 'red';
         this.img = new Image();
     }
 
