@@ -1,17 +1,17 @@
 class Player {
-    constructor(x, y, w, h, ctx) {
+    constructor(x, y, w, h, ctx, playerImage) {
         this.x = x;
         this.y = y;
         this.w = w;
         this.h = h;
         this.ctx = ctx;
         this.img = new Image();
+        this.img.src = playerImage;
 
 
     }
 
     draw() {
-        this.img.src = "docs/assets/images/playerone.png";
         ctx.drawImage(this.img, this.x, this.y, 100, 100);
     }
 

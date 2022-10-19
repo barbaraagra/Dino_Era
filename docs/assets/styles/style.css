@@ -21,6 +21,75 @@ body {
     background-size: cover;
 }
 
+#start-screen {
+    position: fixed;
+    top: 10;
+    left: 10;
+    width: 800px;
+    height: 550px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-between;
+    background-repeat: no-repeat;
+}
+
+#start-screen__player-one {
+    font-family: 'Silkscreen', cursive;
+    font-size: 20px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: #FFF679;
+    border-color: #F4CC67;
+}
+
+#start-screen__player-one:hover {
+    transform: scale(1.1);
+    transition: all 0.5s;
+    background-color: #F4CC67;
+    border-color: #FFF679;
+}
+
+#start-screen__player-two {
+    font-family: 'Silkscreen', cursive;
+    font-size: 20px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: #FFF679;
+    border-color: #F4CC67;
+}
+
+#start-screen__player-two:hover {
+    transform: scale(1.1);
+    transition: all 0.5s;
+    background-color: #F4CC67;
+    border-color: #FFF679;
+}
+
+#start-screen__player-three {
+    font-family: 'Silkscreen', cursive;
+    font-size: 20px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: #FFF679;
+    border-color: #F4CC67;
+}
+
+#start-screen__player-three:hover {
+    transform: scale(1.1);
+    transition: all 0.5s;
+    background-color: #F4CC67;
+    border-color: #FFF679;
+}
+
 .game-intro {
     display: flex;
     flex-direction: row;
@@ -58,4 +127,8 @@ body {
     justify-content: space-around;
     align-items: center;
     align-content: center;
+}
+
+.hidden {
+    visibility: hidden;
 }

@@ -1,5 +1,5 @@
 class Game {
-    constructor() {
+    constructor(difficulty) {
         this.canvas = document.getElementById('canvas');
         this.ctx = canvas.getContext('2d');
         this.dino = null;
@@ -20,8 +20,8 @@ class Game {
         this.imgGameOver = new Image();
         this.imgGameOver.src = "docs/assets/images/gameover.png";
         this.imgWin = new Image();
-        this.imgWin.src = ""
-        this.count
+        this.imgWin.src = "docs/assets/images/youwin.png"
+        this.difficulty = difficulty;
 
     }
     drawBackground() {
@@ -29,7 +29,14 @@ class Game {
  *//*         this.ctx.drawImage(this.background, 0, 0, this.width, this.height);
  */    }
     start() {
-        this.player = new Player(100, 420, 50, 75, this.ctx);
+        if (this.difficulty === 1) {
+            this.player = new Player(100, 420, 50, 75, this.ctx, "docs/assets/images/playerone.png");
+        } else if (this.difficulty === 2) {
+            this.player = new Player(100, 200, 90, 40, this.ctx, "docs/assets/images/playertwo.png");
+        } else if (this.difficulty === 3) {
+            this.player = new Player(100, 420, 90, 90, this.ctx, "docs/assets/images/playerthree.png");
+        }
+
         this.controls = new Controls(this.player);
         this.controls.keyboardEvents();
         this.intervalId = setInterval(this.update, 1000 / 60);
@@ -39,10 +46,9 @@ class Game {
         this.frames++;
         this.updateObstacles();
         this.player.draw();
+        this.checkWin();
         this.checkGameOver();
         this.timer();
-        //   this.drawHearts1();
-        //  this.score();
     };
 
 
@@ -57,6 +63,14 @@ class Game {
         if (this.frames % 110 === 0) {
             this.obstacles.push(new Enemy(this.ctx));
         }
+    }
+
+    checkWin() {
+        if (this.count <= 0) {
+            this.ctx.drawImage(this.imgWin, 0, 0, this.width, this.height);
+            this.stop();
+        }
+
     }
 
     checkGameOver() {
@@ -80,15 +94,17 @@ class Game {
         }
     }
 
+
+
     stop() {
         clearInterval(this.intervalId);
     }
 
     timer() {
-        this.ctx.font = "20px monospace";
+        this.ctx.font = "22px Silkscreen";
         this.ctx.fillStyle = "green";
-        this.count = 60 - (this.frames / 60);
-        this.ctx.fillText(`Timer: ${this.count.toFixed(2)[0]}${this.count.toFixed(2)[1]}:${this.count.toFixed(2)[3]}${this.count.toFixed(2)[4]}`, 630, 50);
+        let seconds = Math.floor(60 - (this.frames / 60))
+        this.ctx.fillText(`00:${seconds}`, 690, 50)
     };
 
 

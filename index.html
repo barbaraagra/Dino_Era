@@ -26,9 +26,20 @@
             <img src="./docs/assets/images/keyarrow.png" alt="setas" class="setas">
         </div>
 
-        <div game-board>
-            <!-- <img src="./docs/assets/images/game-bg.png" alt="main background" class="main-background"> -->
-            <!--    <img src="./docs/assets/images/playerone.png" alt="apatosaurus" class="apatosaurus"> -->
+        <div id="game-board">
+
+            <div id="start-screen">
+                <button id="start-screen__player-one"><img style="width: 100px; height: 100px"
+                        src="./docs/assets/images/playerone.png" alt="">
+                    Easy</button>
+
+                <button id="start-screen__player-two" img style="width: 100px; height: 100px"
+                    src="./docs/assets/images/playertwo.png" alt="">Medium</button>
+
+                <button id="start-screen__player-three" img style="width: 100px; height: 100px"
+                    src="./docs/assets/images/playerthree.png" alt="">Hard</button>
+
+            </div>
 
             <canvas id="canvas" style="border: 5px solid whitesmoke" width="800px" height="550px"></canvas>
 
