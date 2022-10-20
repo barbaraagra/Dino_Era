@@ -4,7 +4,7 @@
 }
 
 body {
-    background-image: url('/docs/assets/images/teladefundo.png');
+    background-image: url('https://i.ibb.co/ssX7Jr0/teladefundo.png');
     color: #AF43AB;
     font-size: 10px;
 
@@ -21,7 +21,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('/docs/assets/images/background.jpg');
+    background-image: url('https://i.ibb.co/cy7dg6V/background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -43,9 +43,10 @@ body {
 
 
 #start-screen__player-one {
-    font-family: 'Silkscreen', cursive;
-    color: #EE242D;
-    font-size: 20px;
+    font-family: 'Jost', sans-serif;
+    font-weight: 600;
+    color: #779623;
+    font-size: 12px;
     width: 150px;
     height: 150px;
     border: 2px solid #EE242D;
@@ -63,9 +64,10 @@ body {
 }
 
 #start-screen__player-two {
-    font-family: 'Silkscreen', cursive;
-    color: #EE242D;
-    font-size: 20px;
+    font-family: 'Jost', sans-serif;
+    font-weight: 600;
+    color: #CF5009;
+    font-size: 12px;
     width: 150px;
     height: 150px;
     border: 2px solid #EE242D;
@@ -83,9 +85,10 @@ body {
 }
 
 #start-screen__player-three {
-    font-family: 'Silkscreen', cursive;
-    color: #EE242D;
-    font-size: 20px;
+    font-family: 'Jost', sans-serif;
+    font-weight: 600;
+    color: #842c81;
+    font-size: 12px;
     width: 150px;
     height: 150px;
     border: 2px solid #EE242D;
@@ -151,6 +154,7 @@ body {
     border-radius: 10px;
     cursor: pointer;
     position: fixed;
+    margin: 400px 0 0 330px;
 }
 
 .hidden {
