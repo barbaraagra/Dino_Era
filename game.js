@@ -41,6 +41,7 @@ class Game {
  */    }
     start() {
         restartBtn.classList.add('hidden')
+
         if (this.difficulty === 1) {
             this.player = new Player(470, 400, 95, 90, this.ctx, "docs/assets/images/playereasy.png", "docs/assets/images/playereasy-flipped.png", 340, 460, 10, 10);
         } else if (this.difficulty === 2) {
