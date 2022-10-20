@@ -157,6 +157,12 @@ body {
     margin: 400px 0 0 330px;
 }
 
+#restart-game:hover {
+    background-color: #F4CC67;
+    transform: scale(1.1);
+    transition: all 0.5s;
+}
+
 .hidden {
     visibility: hidden;
 }

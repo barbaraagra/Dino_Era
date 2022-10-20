@@ -27,6 +27,12 @@ class Game {
         this.difficulty = difficulty;
         this.time = 60;
         this.timer = null;
+        this.song = new Audio('docs/assets/sounds/DinoEra.mp3');
+        this.song.loop = false;
+        this.loseSong = new Audio('docs/assets/sounds/Losegame.wav');
+        this.loseSong.loop = false;
+        this.songCrash = new Audio('docs/assets/sounds/crashSound.mp3');
+        this.songCrash.loop = false;
 
     }
     drawBackground() {
@@ -48,6 +54,7 @@ class Game {
         this.timer = setInterval(() => {
             this.time--
         }, 1000)
+        this.song.play();
     }
     update = () => {
         this.ctx.clearRect(0, 0, this.width, this.height);
@@ -86,6 +93,7 @@ class Game {
 
         for (let i = 0; i < this.obstacles.length; i++) {
             if (this.player.crashWith(this.obstacles[i])) {
+                this.songCrash.play();
                 this.life -= 10;
                 this.obstacles.splice(i, 1);
             } else if (this.life === 30) {
@@ -98,6 +106,7 @@ class Game {
 
             } else if (this.life <= 0) {
                 this.ctx.drawImage(this.imgGameOver, 0, 0, this.width, this.height);
+                this.loseSong.play();
                 this.stop();
                 restartBtn.classList.remove('hidden')
             }
@@ -108,6 +117,8 @@ class Game {
 
     stop() {
         clearInterval(this.intervalId);
+        this.song.pause();
+        this.song.currentTime = 0;
     }
 
     counter() {
