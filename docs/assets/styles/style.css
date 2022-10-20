@@ -44,9 +44,11 @@ body {
 
 #start-screen__player-one {
     font-family: 'Silkscreen', cursive;
+    color: #EE242D;
     font-size: 20px;
     width: 150px;
     height: 150px;
+    border: 2px solid #EE242D;
     border-radius: 50%;
     cursor: pointer;
     background-color: #FFF679;
@@ -62,9 +64,11 @@ body {
 
 #start-screen__player-two {
     font-family: 'Silkscreen', cursive;
+    color: #EE242D;
     font-size: 20px;
     width: 150px;
     height: 150px;
+    border: 2px solid #EE242D;
     border-radius: 50%;
     cursor: pointer;
     background-color: #FFF679;
@@ -80,9 +84,11 @@ body {
 
 #start-screen__player-three {
     font-family: 'Silkscreen', cursive;
+    color: #EE242D;
     font-size: 20px;
     width: 150px;
     height: 150px;
+    border: 2px solid #EE242D;
     border-radius: 50%;
     cursor: pointer;
     background-color: #FFF679;
@@ -133,6 +139,18 @@ body {
     justify-content: space-around;
     align-items: center;
     align-content: center;
+}
+
+#restart-game {
+    font-family: 'Silkscreen', cursive;
+    font-size: 18px;
+    color: black;
+    background-color: #FFF679;
+    padding: 10px 20px;
+    margin: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    position: fixed;
 }
 
 .hidden {

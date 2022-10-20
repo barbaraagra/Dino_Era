@@ -1,13 +1,18 @@
 class Player {
-    constructor(x, y, w, h, ctx, playerImage) {
+    constructor(x, y, w, h, ctx, playerImg, flippedImg, upperY, bottomY, speedX, speedY) {
         this.x = x;
         this.y = y;
         this.w = w;
         this.h = h;
         this.ctx = ctx;
         this.img = new Image();
-        this.img.src = playerImage;
-
+        this.img.src = playerImg;
+        this.playerImg = playerImg;
+        this.flippedImg = flippedImg;
+        this.speedX = speedX;
+        this.speedY = speedY;
+        this.upperY = upperY;
+        this.bottomY = bottomY;
 
     }
 
@@ -16,22 +21,18 @@ class Player {
     }
 
 
-    newPos() {
-        this.x += this.speedX;
-
-    }
 
     top() {
-        return (this.y + 18);
+        return (this.y + 50);
     }
     bottom() {
-        return this.y + this.h;
+        return (this.y - 20) + this.h;
     }
     left() {
-        return this.x;
+        return (this.x + 20);
     }
     right() {
-        return this.x + this.w;
+        return (this.x - 20) + this.w;
     }
 
 

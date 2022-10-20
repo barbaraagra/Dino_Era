@@ -1,3 +1,5 @@
+const restartBtn = document.getElementById('restart-game')
+
 class Game {
     constructor(difficulty) {
         this.canvas = document.getElementById('canvas');
@@ -10,6 +12,7 @@ class Game {
         this.height = 550;
         this.background = new Image();
         this.controls = null;
+        this.controls2 = null;
         this.life = 30;
         this.img1 = new Image();
         this.img1.src = "docs/assets/images/heart-full.png";
@@ -18,10 +21,12 @@ class Game {
         this.img3 = new Image();
         this.img3.src = "docs/assets/images/heart-twoemp.png";
         this.imgGameOver = new Image();
-        this.imgGameOver.src = "docs/assets/images/gameover.png";
+        this.imgGameOver.src = "docs/assets/images/gameoverscreen.png";
         this.imgWin = new Image();
         this.imgWin.src = "docs/assets/images/youwin.png"
         this.difficulty = difficulty;
+        this.time = 60;
+        this.timer = null;
 
     }
     drawBackground() {
@@ -29,17 +34,20 @@ class Game {
  *//*         this.ctx.drawImage(this.background, 0, 0, this.width, this.height);
  */    }
     start() {
+        restartBtn.classList.add('hidden')
         if (this.difficulty === 1) {
-            this.player = new Player(100, 420, 50, 75, this.ctx, "docs/assets/images/playereasy.png");
+            this.player = new Player(470, 400, 95, 90, this.ctx, "docs/assets/images/playereasy.png", "docs/assets/images/playereasy-flipped.png", 340, 460, 10, 10);
         } else if (this.difficulty === 2) {
-            this.player = new Player(600, 370, 105, 90, this.ctx, "docs/assets/images/playernormal.png");
+            this.player = new Player(600, 370, 105, 90, this.ctx, "docs/assets/images/playernormal.png", "docs/assets/images/playernormal-flipped.png", 340, 460, 3, 3);
         } else if (this.difficulty === 3) {
-            this.player = new Player(600, 200, 100, 75, this.ctx, "docs/assets/images/playerhard.png");
+            this.player = new Player(600, 200, 100, 75, this.ctx, "docs/assets/images/playerhard.png", "docs/assets/images/playerhard-flipped.png", 0, 280, 10, 10);
         }
-
         this.controls = new Controls(this.player);
         this.controls.keyboardEvents();
         this.intervalId = setInterval(this.update, 1000 / 60);
+        this.timer = setInterval(() => {
+            this.time--
+        }, 1000)
     }
     update = () => {
         this.ctx.clearRect(0, 0, this.width, this.height);
@@ -47,8 +55,8 @@ class Game {
         this.updateObstacles();
         this.player.draw();
         this.checkWin();
+        this.counter();
         this.checkGameOver();
-        this.timer();
     };
 
 
@@ -60,15 +68,16 @@ class Game {
             this.obstacles[i].draw();
         }
 
-        if (this.frames % 110 === 0) {
+        if (this.frames % 100 === 0) {
             this.obstacles.push(new Enemy(this.ctx));
         }
     }
 
     checkWin() {
-        if (this.count <= 0) {
+        if (this.time === 0) {
             this.ctx.drawImage(this.imgWin, 0, 0, this.width, this.height);
             this.stop();
+            restartBtn.classList.remove('hidden')
         }
 
     }
@@ -90,6 +99,7 @@ class Game {
             } else if (this.life <= 0) {
                 this.ctx.drawImage(this.imgGameOver, 0, 0, this.width, this.height);
                 this.stop();
+                restartBtn.classList.remove('hidden')
             }
         }
     }
@@ -100,11 +110,16 @@ class Game {
         clearInterval(this.intervalId);
     }
 
-    timer() {
-        this.ctx.font = "22px Silkscreen";
-        this.ctx.fillStyle = "green";
-        let seconds = Math.floor(60 - (this.frames / 60))
-        this.ctx.fillText(`00:${seconds}`, 690, 50)
+    counter() {
+        if (this.time === 0) {
+            this.ctx.font = "22px Silkscreen";
+            this.ctx.fillStyle = "white";
+            this.ctx.fillText(``, 690, 50)
+        } else {
+            this.ctx.font = "22px Silkscreen";
+            this.ctx.fillStyle = "green";
+            this.ctx.fillText(`00:${this.time}`, 690, 50)
+        }
     };
 
 
@@ -128,5 +143,6 @@ class Game {
     drawHearts3() {
         ctx.drawImage(this.img3, 35, 35, 80, 20);
     }
+
 
 }

@@ -2,6 +2,11 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
+
+
+let startScreen = document.getElementById('start-screen')
+let game;
+
 window.onload = () => {
     /*    document.getElementById('start-button').onclick = () => {
            startGame();
@@ -16,10 +21,15 @@ window.onload = () => {
         startGame(3);
     };
 
+    document.getElementById('restart-game').onclick = () => {
+        game.ctx.clearRect(0, 0, 800, 550)
+        game = null
+        startScreen.classList.remove('hidden')
+    }
+
     function startGame(difficulty) {
-        let startScreen = document.getElementById('start-screen')
         startScreen.classList.add('hidden')
-        let game = new Game(difficulty);
+        game = new Game(difficulty);
         game.start();
     }
 };
