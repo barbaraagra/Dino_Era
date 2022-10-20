@@ -106,7 +106,9 @@ class Game {
 
             } else if (this.life <= 0) {
                 this.ctx.drawImage(this.imgGameOver, 0, 0, this.width, this.height);
+                this.song.pause();
                 this.loseSong.play();
+                this.song.currentTime = 0;
                 this.stop();
                 restartBtn.classList.remove('hidden')
             }
@@ -114,11 +116,8 @@ class Game {
     }
 
 
-
     stop() {
         clearInterval(this.intervalId);
-        this.song.pause();
-        this.song.currentTime = 0;
     }
 
     counter() {
