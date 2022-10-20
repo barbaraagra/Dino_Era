@@ -144,9 +144,19 @@ body {
     align-content: center;
 }
 
+#chooseplayer {
+    position: fixed;
+    margin-top: 60px;
+    margin-left: 230px;
+}
+
+.hiddentxt {
+    visibility: hidden;
+}
+
 #restart-game {
     font-family: 'Silkscreen', cursive;
-    font-size: 18px;
+    font-size: 20px;
     color: black;
     background-color: #FFF679;
     padding: 10px 20px;

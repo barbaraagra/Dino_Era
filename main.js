@@ -13,12 +13,21 @@ window.onload = () => {
        }; */
     document.getElementById('start-screen__player-one').onclick = () => {
         startGame(1);
+
+        let chooseplayer = document.getElementById('chooseplayer')
+        chooseplayer.classList.add('hiddentxt')
     };
     document.getElementById('start-screen__player-two').onclick = () => {
         startGame(2);
+
+        let chooseplayer = document.getElementById('chooseplayer')
+        chooseplayer.classList.add('hiddentxt')
     };
     document.getElementById('start-screen__player-three').onclick = () => {
         startGame(3);
+
+        let chooseplayer = document.getElementById('chooseplayer')
+        chooseplayer.classList.add('hiddentxt')
     };
 
     document.getElementById('restart-game').onclick = () => {
