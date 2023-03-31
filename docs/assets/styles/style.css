@@ -7,7 +7,6 @@ body {
     background-image: url('https://i.ibb.co/ssX7Jr0/teladefundo.png');
     color: #AF43AB;
     font-size: 10px;
-
 }
 
 .firstscreen h2 {
@@ -24,10 +23,12 @@ body {
     background-image: url('https://i.ibb.co/cy7dg6V/background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    position: relative;
 }
 
+
 #start-screen {
-    position: fixed;
+    position: absolute;
     top: 10;
     left: 10;
     width: 800px;
@@ -39,6 +40,7 @@ body {
     align-items: center;
     align-content: space-between;
     background-repeat: no-repeat;
+    z-index: 10;
 }
 
 
@@ -175,4 +177,28 @@ body {
 
 .hidden {
     visibility: hidden;
+}
+
+@media only screen and (max-width: 600px) {
+
+    /* CSS code for screens smaller than 600px */
+    body {
+        font-size: 8px;
+    }
+
+    .firstscreen h2 {
+        font-size: 14px;
+        width: auto;
+    }
+
+    #canvas {
+        width: 200%;
+
+    }
+
+    #game-board img {
+        z-index: 12;
+
+    }
+
 }
